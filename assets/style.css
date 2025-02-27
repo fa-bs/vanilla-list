@@ -42,7 +42,7 @@ body {
     position: relative;
     align-items: center;
     width: clamp(315px, 95vw, 990px);
-    height: 100vh;
+    height: var(--real-height);
     overflow-x: hidden;
     margin: 0 auto;
     padding: 0;

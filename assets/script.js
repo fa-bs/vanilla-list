@@ -14,6 +14,13 @@ if (localStorage.getItem('myList')) {
     }
 }
 
+//check real height from screen
+function realHeight() {
+    document.documentElement.style.setProperty('--real-height', `${window.innerHeight}px`);
+}
+window.addEventListener('load', realHeight);
+window.addEventListener('resize', realHeight);
+
 function addTask() {
     if (input.value) {
         const date = new Date()
