@@ -1,0 +1,257 @@
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+}
+
+@keyframes inputAttn {
+    from {
+        background-color: #f24d6e;
+    }
+}
+
+@keyframes refreshItens {
+    from {
+        opacity: 0;
+    }
+}
+
+
+* {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --black: #252525;
+    --white: #fcf6f1;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    width: clamp(315px, 95vw, 990px);
+    height: 100vh;
+    overflow-x: hidden;
+    margin: 0 auto;
+    padding: 0;
+    background-color: var(--white);
+    color: var(--black);
+}
+
+h1 {
+    font-size: 3rem;
+    margin-block: 10px;
+}
+
+header {
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: end;
+    align-items: center;
+    padding: 20px;
+}
+
+input {
+    height: 60px;
+    flex: 70%;
+    padding-left: 30px;
+    font-size: 1.2rem;
+    text-align: center;
+    border: none;
+    border-radius: 12px;
+    color: var(--black);
+    background-color: white;
+    box-shadow: 0.4px 2px 2px rgba(0, 0, 0, 0.144);
+}
+
+input:focus {
+    outline: none;
+
+}
+
+input::placeholder {
+    opacity: .5;
+}
+
+.main {
+    width: 85vw;
+    max-width: 890px;
+    margin: 10px auto;
+    list-style: none;
+    padding: 0;
+}
+
+.main li {
+    display: flex;
+    flex-flow: column;
+    margin-bottom: 13px;
+}
+
+.date {
+    align-self: flex-start;
+    font-size: .7rem;
+    margin: 3px;
+    opacity: 0;
+}
+
+.item {
+    display: flex;
+    flex-flow: row;
+    gap: 5px;
+    justify-content: center;
+    align-items: start;
+    width: 100%;
+    height: auto;
+    margin: 5px auto;
+    padding: 10px;
+    background-color: transparent;
+    border: 1px solid #a8a8a8;
+    border-radius: 10px;
+}
+
+.item-text {
+    flex: 70%;
+    text-align: left;
+    font-size: 1rem;
+}
+
+.item-icon {
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn-delete {
+    cursor: pointer;
+    border: none;
+    font-size: 1rem;
+    color: #f24d6e;
+}
+
+.item-done {
+    background-color: rgb(230, 230, 230);
+}
+
+.item-done .item-icon {
+    color: #8dc26f;
+}
+
+.item-done .item-text {
+    color: #4b3d3a;
+    text-decoration: line-through;
+}
+
+.fade-in {
+    animation: fadeIn .5s ease var(--delay, 0s) forwards;
+}
+
+.fade-out {
+    animation: fadeOut .5s ease forwards;
+}
+
+.input-attn {
+    animation: inputAttn 1s ease;
+}
+
+.refresh-itens {
+    animation: refreshItens 1s ease;
+}
+
+.wrapper-switch {
+    display: flex;
+    gap: 5px;
+    padding: 10px;
+    align-items: end;
+}
+
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 16px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    border-radius: 12px;
+    background-color: var(--black);
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider::before {
+    position: absolute;
+    content: "";
+    height: 12px;
+    width: 12px;
+    left: 4px;
+    bottom: 2px;
+    border-radius: 50%;
+    background-color: #f24d6e;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+/* .switch input:checked+.slider {
+    background-color: #be7be7;
+} */
+
+.switch input:checked+.slider::before {
+    background-color: #8dc26f;
+}
+
+.switch input:checked+.slider:before {
+    -webkit-transform: translateX(10px);
+    -ms-transform: translateX(10px);
+    transform: translateX(10px);
+}
+
+@media screen and (max-width: 576px) {
+    .item-icon {
+        font-size: 2rem;
+    }
+
+    .btn-delete {
+        font-size: 2rem;
+    }
+
+    .item-text {
+        font-size: 1.3rem;
+    }
+
+}
+
+@media screen and (max-width: 480px) {
+    input {
+        width: 200px;
+    }
+}
