@@ -106,10 +106,18 @@ input::placeholder {
 }
 
 .date {
-    align-self: flex-start;
     font-size: .7rem;
     margin: 3px;
     opacity: 0;
+}
+
+.finished {
+    color: #668f4f;
+}
+
+div.dates {
+    display: flex;
+    align-self: flex-end;
 }
 
 .item {
@@ -246,11 +254,17 @@ input::placeholder {
     .item-text {
         font-size: 1.3rem;
     }
-
 }
 
 @media screen and (max-width: 480px) {
     input {
         width: 200px;
+    }
+
+    div.dates {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        align-self: flex-end;
     }
 }

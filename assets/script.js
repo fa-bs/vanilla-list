@@ -33,9 +33,8 @@ function addTask() {
         <div class="item-icon" onclick="checkTask(${dateId})"><i id="icon-${dateId}" class="bi bi-circle"></i></div>
         <div class="btn-delete" onclick="deleteTask(${dateId})"><i class="bi bi-circle-fill"></i></div>
         </div>
-        <small style="--delay: .2s" class="date fade-in">
-        Created: ${date.toDateString()} • ${date.toLocaleTimeString()}
-        </small>
+        <div class="dates"><small style="--delay: .2s" class="date fade-in"> Created: ${date.toDateString()} • ${date.toLocaleTimeString()}
+        </small></div>
     `
         main.prepend(newItem)
         // main.append(newItem)
@@ -63,13 +62,24 @@ function checkTask(id) {
     const li = document.getElementById(id);
     const item = document.getElementById("item-" + id)
     const icon = document.getElementById("icon-" + id)
-    item.classList.toggle("item-done")
-    // console.log(li.lastElementChild.innerHTML);
+    const divDates = li.lastElementChild
+    const date = new Date()
 
-    if (!icon.classList.contains("bi-check-circle-fill"))
+    item.classList.toggle("item-done")
+
+    if (!icon.classList.contains("bi-check-circle-fill")) {
         li.parentNode.appendChild(li)
-    else
+
+        const itemFinished = document.createElement("small")
+        itemFinished.innerHTML = ` <small style="--delay: .5s" class="date fade-in finished"> Finished: ${date.toDateString()} •
+        ${date.toLocaleTimeString()} </small>`
+        divDates.appendChild(itemFinished)
+
+    }
+    else {
         li.parentNode.prepend(li)
+        divDates.removeChild(divDates.lastElementChild)
+    }
 
     icon.classList.toggle("bi-circle")
     icon.classList.toggle("bi-check-circle-fill")
