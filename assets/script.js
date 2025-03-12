@@ -28,11 +28,14 @@ function addTask() {
         // console.log(dateId);
         const newItem = document.createElement("li")
         newItem.setAttribute("id", dateId)
-        newItem.innerHTML = `<div id="item-${dateId}" class="item fade-in">
+        newItem.innerHTML = `<div><div class="move-controls"><button class="btn-move"
+                onclick="moveUp(${dateId})"><i class="bi bi-arrow-up-circle-fill"></i></button><button class="btn-move"
+                onclick="moveDown(${dateId})"><i class="bi bi-arrow-down-circle-fill"></i></button>
+        </div><div id="item-${dateId}" class="item fade-in">
         <div class="item-text">${input.value}</div>
         <div class="item-icon" onclick="checkTask(${dateId})"><i id="icon-${dateId}" class="bi bi-circle"></i></div>
         <div class="btn-delete" onclick="deleteTask(${dateId})"><i class="bi bi-circle-fill"></i></div>
-        </div>
+        </div></div>
         <div class="dates"><small style="--delay: .2s" class="date fade-in"> Created: ${date.toDateString()} • ${date.toLocaleTimeString()}
         </small></div>
     `
@@ -83,6 +86,28 @@ function checkTask(id) {
 
     icon.classList.toggle("bi-circle")
     icon.classList.toggle("bi-check-circle-fill")
+
+    if (switcher.checked) localStorage.setItem('myList', JSON.stringify(main.innerHTML))
+}
+
+const moveUp = (id) => {
+    const li = document.getElementById(id);
+    const itemUp = li.previousElementSibling
+
+    if (itemUp) {
+        li.parentNode.insertBefore(li, itemUp)
+    }
+
+    if (switcher.checked) localStorage.setItem('myList', JSON.stringify(main.innerHTML))
+}
+
+const moveDown = (id) => {
+    const li = document.getElementById(id);
+    const itemDown = li.nextElementSibling
+
+    if (itemDown) {
+        li.parentNode.insertBefore(itemDown, li)
+    }
 
     if (switcher.checked) localStorage.setItem('myList', JSON.stringify(main.innerHTML))
 }
