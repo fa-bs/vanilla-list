@@ -107,7 +107,7 @@ input::placeholder {
 
 .date {
     font-size: .7rem;
-    margin: 3px;
+    margin: 2px 3px 0 0;
     opacity: 0;
 }
 
@@ -165,7 +165,7 @@ div.dates {
     text-decoration: line-through;
 }
 
-li>div {
+.task {
     display: flex;
     gap: 3px;
 }

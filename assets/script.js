@@ -28,17 +28,15 @@ function addTask() {
         // console.log(dateId);
         const newItem = document.createElement("li")
         newItem.setAttribute("id", dateId)
-        newItem.innerHTML = `<div><div class="move-controls"><button class="btn-move"
-                onclick="moveUp(${dateId})"><i class="bi bi-arrow-up-circle-fill"></i></button><button class="btn-move"
-                onclick="moveDown(${dateId})"><i class="bi bi-arrow-down-circle-fill"></i></button>
+        newItem.innerHTML = `<div class="task"><div class="move-controls"><button class="btn-move"onclick="moveUp(${dateId})"><i class="bi bi-arrow-up-circle-fill"></i></button><button class="btn-move"
+        onclick="moveDown(${dateId})"><i class="bi bi-arrow-down-circle-fill"></i></button>
         </div><div id="item-${dateId}" class="item fade-in">
         <div class="item-text"></div>
         <div class="item-icon" onclick="checkTask(${dateId})"><i id="icon-${dateId}" class="bi bi-circle"></i></div>
         <div class="btn-delete" onclick="deleteTask(${dateId})"><i class="bi bi-circle-fill"></i></div>
         </div></div>
         <div class="dates"><small style="--delay: .2s" class="date fade-in"> Created: ${date.toDateString()} • ${date.toLocaleTimeString()}
-        </small></div>
-    `
+        </small></div>`
         main.prepend(newItem)
         // main.append(newItem)
 
@@ -78,8 +76,10 @@ function checkTask(id) {
         li.parentNode.appendChild(li)
 
         const itemFinished = document.createElement("small")
-        itemFinished.innerHTML = ` <small style="--delay: .5s" class="date fade-in finished"> Finished: ${date.toDateString()} •
-        ${date.toLocaleTimeString()} </small>`
+        itemFinished.textContent = `Finished: ${date.toDateString()} •
+        ${date.toLocaleTimeString()}`
+        itemFinished.setAttribute("style", "--delay: .5s")
+        itemFinished.setAttribute("class", "date fade-in finished")
         divDates.appendChild(itemFinished)
 
     }
