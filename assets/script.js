@@ -137,6 +137,9 @@ function deleteTask(id) {
 
 switcher.addEventListener('change', () => {
     localStorage.setItem('autoSave', JSON.stringify(switcher.checked))
+
+    if (switcher.checked) localStorage.setItem('myList', JSON.stringify(main.innerHTML))
+    else localStorage.removeItem("myList")
 })
 
 //save in localStorage
